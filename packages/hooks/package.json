@@ -1,0 +1,16 @@
+{
+  "name": "@spaz/hooks",
+  "version": "1.0.0",
+  "description": "Shared React hooks for Spaz SsG platform",
+  "main": "index.ts",
+  "private": true,
+  "dependencies": {
+    "@spaz/types": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  },
+  "files": [
+    "index.ts"
+  ]
+}

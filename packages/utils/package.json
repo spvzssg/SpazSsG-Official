@@ -1,0 +1,10 @@
+{
+  "name": "@spaz/utils",
+  "version": "1.0.0",
+  "description": "Shared utility functions for Spaz SsG platform",
+  "main": "index.ts",
+  "private": true,
+  "files": [
+    "index.ts"
+  ]
+}

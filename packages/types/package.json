@@ -1,0 +1,10 @@
+{
+  "name": "@spaz/types",
+  "version": "1.0.0",
+  "description": "Shared TypeScript types for Spaz SsG platform",
+  "main": "index.ts",
+  "private": true,
+  "files": [
+    "index.ts"
+  ]
+}

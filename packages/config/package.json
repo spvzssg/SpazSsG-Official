@@ -1,0 +1,10 @@
+{
+  "name": "@spaz/config",
+  "version": "1.0.0",
+  "description": "Shared configuration and design tokens for Spaz SsG platform",
+  "main": "index.ts",
+  "private": true,
+  "files": [
+    "index.ts"
+  ]
+}

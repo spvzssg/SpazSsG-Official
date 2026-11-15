@@ -1,0 +1,10 @@
+{
+  "name": "@spaz/services",
+  "version": "1.0.0",
+  "description": "Shared API services for Spaz SsG platform",
+  "main": "index.ts",
+  "private": true,
+  "files": [
+    "index.ts"
+  ]
+}
