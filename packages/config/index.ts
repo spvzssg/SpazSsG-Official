@@ -94,11 +94,14 @@ export const ARTIST_INFO = {
 
 export const OFFICIAL_LINKS = {
   SPOTIFY: 'https://open.spotify.com/artist/00IHJtvQJqIXnKhhvS3u92?si=qOhXAWBXTzydQ8kupDamSA',
+  YOUTUBE_CHANNEL: 'https://youtube.com/@spazssglive',
+  FACEBOOK: '',
+  WEBSITE: '',
   APPLE_MUSIC: 'https://music.apple.com/us/artist/spaz-ssg/1482065224',
   UNITEDMASTERS: 'https://unitedmasters.com/a/spaz-ssg',
   INSTAGRAM: 'https://www.instagram.com/spvzssg',
   TIKTOK: 'https://www.tiktok.com/@spvzssg',
-  YOUTUBE: 'https://youtube.com/@spazssglive?si=Q2W5bWtYsfmAIA9p',
+  YOUTUBE: 'https://youtube.com/@spazssglive',
   TWITCH: 'https://www.twitch.tv/spazssg',
   DISCORD: 'https://discord.gg/pk3r75EgD',
   MUSIC_SUBMISSIONS: 'https://www.nero.fan/spazssglive',

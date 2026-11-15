@@ -7,13 +7,13 @@
  */
 
 import { useState, useEffect, useCallback } from 'react';
+import { AppError } from '@spaz/types';
 import type {
   HomeData,
   Music,
   SocialContent,
   LiveStream,
   Announcement,
-  AppError,
 } from '@spaz/types';
 
 // Mock data - replaced with real API calls in production
@@ -69,8 +69,8 @@ export function useHome(): UseHomeReturn {
       setData(mockHomeData);
     } catch (err) {
       const appError = err instanceof Error
-        ? new (require('@spaz/types')).AppError('FETCH_ERROR', err.message, true)
-        : new (require('@spaz/types')).AppError('UNKNOWN_ERROR', 'An unknown error occurred', true);
+        ? new AppError('FETCH_ERROR', err.message, true)
+        : new AppError('UNKNOWN_ERROR', 'An unknown error occurred', true);
       setError(appError);
     } finally {
       setLoading(false);
@@ -114,8 +114,8 @@ export function useMusic(): UseMusicReturn {
       setReleases([]);
     } catch (err) {
       const appError = err instanceof Error
-        ? new (require('@spaz/types')).AppError('FETCH_ERROR', err.message, true)
-        : new (require('@spaz/types')).AppError('UNKNOWN_ERROR', 'An unknown error occurred', true);
+        ? new AppError('FETCH_ERROR', err.message, true)
+        : new AppError('UNKNOWN_ERROR', 'An unknown error occurred', true);
       setError(appError);
     } finally {
       setLoading(false);
@@ -160,8 +160,8 @@ export function useSocial(): UseSocialReturn {
       setContent([]);
     } catch (err) {
       const appError = err instanceof Error
-        ? new (require('@spaz/types')).AppError('FETCH_ERROR', err.message, true)
-        : new (require('@spaz/types')).AppError('UNKNOWN_ERROR', 'An unknown error occurred', true);
+        ? new AppError('FETCH_ERROR', err.message, true)
+        : new AppError('UNKNOWN_ERROR', 'An unknown error occurred', true);
       setError(appError);
     } finally {
       setLoading(false);
@@ -206,8 +206,8 @@ export function useLive(): UseLiveReturn {
       setStream(null);
     } catch (err) {
       const appError = err instanceof Error
-        ? new (require('@spaz/types')).AppError('FETCH_ERROR', err.message, true)
-        : new (require('@spaz/types')).AppError('UNKNOWN_ERROR', 'An unknown error occurred', true);
+        ? new AppError('FETCH_ERROR', err.message, true)
+        : new AppError('UNKNOWN_ERROR', 'An unknown error occurred', true);
       setError(appError);
     } finally {
       setLoading(false);
@@ -252,8 +252,8 @@ export function useAnnouncements(): UseAnnouncementsReturn {
       setAnnouncements([]);
     } catch (err) {
       const appError = err instanceof Error
-        ? new (require('@spaz/types')).AppError('FETCH_ERROR', err.message, true)
-        : new (require('@spaz/types')).AppError('UNKNOWN_ERROR', 'An unknown error occurred', true);
+        ? new AppError('FETCH_ERROR', err.message, true)
+        : new AppError('UNKNOWN_ERROR', 'An unknown error occurred', true);
       setError(appError);
     } finally {
       setLoading(false);
@@ -266,9 +266,3 @@ export function useAnnouncements(): UseAnnouncementsReturn {
 
   return { announcements, loading, error, refresh: fetchAnnouncements };
 }
-
-// ============================================================================
-// INDEX - Export all hooks
-// ============================================================================
-
-export * from './useHome';

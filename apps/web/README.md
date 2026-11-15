@@ -1,101 +1,52 @@
-# Spaz SsG Web Application
+# Spaz SsG Official Website
 
-Official website for Spaz SsG featuring music, livestreams, social content, and The Dreamers Club community.
+Responsive artist website for Spaz SsG, built with Next.js App Router, TypeScript, and Tailwind CSS.
 
-## Quick Start
+## Local development
 
-```bash
-# Install dependencies
+From the repository root:
+
+```powershell
 pnpm install
-
-# Start development server
-pnpm run dev
-
-# Open browser
-open http://localhost:3000
+pnpm --filter @spaz/web run dev
 ```
 
-## Project Structure
+Open <http://localhost:3000>. Stop the server with `Ctrl+C`.
 
-```
-app/
-├── page.tsx                 # Homepage
-├── admin/                   # Admin dashboard
-│   ├── dashboard/page.tsx   # Admin overview
-│   ├── music/page.tsx       # Music management
-│   ├── social/page.tsx      # Social content management
-│   ├── livestreams/page.tsx # Livestream scheduling
-│   ├── announcements/page.tsx # Announcements
-│   └── layout.tsx           # Admin sidebar layout
-├── music/page.tsx           # Music page
-├── social/page.tsx          # Social page
-├── dreamers-club/page.tsx    # Community page
-├── layout.tsx               # Root layout
-└── globals.css              # Global styles
-```
+The public website and its local media assets can be previewed without Supabase credentials. The admin area is intentionally preview-only until the Supabase project, authentication, database policies, and protected server-side operations are configured.
 
-## Pages
+## Website routes
 
-- **/** - Homepage with featured content
-- **/music** - Music platform directory
-- **/social** - Social media hub
-- **/dreamers-club** - Community information
-- **/admin** - Admin dashboard (content management)
+- `/` — Artist homepage and official artist links
+- `/music` — Streaming platform directory
+- `/social` — Social platform directory and Instagram embed
+- `/live` — Stream destination links; never claims a stream is active without verification
+- `/dreamers-club` — Community introduction and Discord link
+- `/everything-spaz` — Central official link directory
+- `/about` — Artist introduction
+- `/admin` — Redirects to the preview dashboard
+- `/admin/dashboard`, `/admin/music`, `/admin/social`, `/admin/livestreams`, `/admin/announcements` — Admin UI preview; no sign-in or edits are enabled
+- `/api/health` — Basic service health response
 
-## Admin Dashboard Features
+## Local media
 
-- **Dashboard**: Overview of all content
-- **Music Management**: Create, edit, delete music releases
-- **Social Management**: Manage social media content
-- **Livestreams**: Schedule and manage livestreams
-- **Announcements**: Post announcements to website and mobile
+Files in `public/` are served by the website itself:
 
-## Shared Packages
+- `spaz-ssg-logo.png` — supplied official logo; preserve its proportions and artwork
+- `animated-header.mp4` — supplied animated hero video; muted, looping, inline playback, with the logo as its poster/fallback
 
-This project uses shared code from the monorepo:
+The supplied asset directory currently contains these files only. The Socials page also loads the requested SociableKIT Instagram widget from their host using embed ID `25729880`; this third-party widget requires an Internet connection and may be blocked by browser privacy settings.
 
-- `@spaz/types` - TypeScript interfaces
-- `@spaz/hooks` - React data fetching hooks
-- `@spaz/utils` - Utility functions
-- `@spaz/services` - API service classes
-- `@spaz/config` - Design tokens and configuration
+## Supabase setup (not yet connected)
 
-## Technology Stack
+Copy `.env.example` to `.env.local` when ready and configure the public Supabase URL and anon key. Never put a Supabase service-role key or third-party API secret in `NEXT_PUBLIC_*` variables. Before enabling admin editing, implement Supabase Auth, server-side session verification, an explicit admin-role check, and RLS policies for every write operation.
 
-- **Framework**: Next.js 14
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Backend**: Supabase
-- **State Management**: React Hooks
+## Verification
 
-## Environment Variables
-
-Copy `.env.example` to `.env.local` and fill in your Supabase credentials:
-
-```bash
-NEXT_PUBLIC_SUPABASE_URL=your_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_key
+```powershell
+pnpm --filter @spaz/web run type-check
+pnpm --filter @spaz/web run build
+pnpm --filter @spaz/web run start
 ```
 
-## Development
-
-```bash
-# Run development server
-pnpm dev
-
-# Type check
-pnpm type-check
-
-# Lint
-pnpm lint
-```
-
-## Deployment
-
-```bash
-# Build for production
-pnpm build
-
-# Start production server
-pnpm start
-```
+The generated production build statically renders the public routes. Verify a local production server with `Invoke-WebRequest http://localhost:3000` or your preferred HTTP client.
