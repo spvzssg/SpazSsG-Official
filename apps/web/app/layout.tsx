@@ -1,48 +1,41 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import SiteHeader from './components/SiteHeader'
+import SiteFooter from './components/SiteFooter'
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
 
 export const metadata: Metadata = {
-  title: 'Spaz SsG - Official Artist Platform',
-  description: 'Official home for Spaz SsG. Music, livestreams, content, and The Dreamers Club community.',
-  keywords: ['Spaz SsG', 'Hip-Hop', 'Music', 'Streaming', 'Artist'],
+  ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
+  title: {
+    default: 'Spaz SsG — Official Artist Website',
+    template: '%s | Spaz SsG',
+  },
+  description: 'The official home of Spaz SsG. Discover music, videos, livestreams, and The Dreamers Club.',
+  keywords: ['Spaz SsG', 'music', 'dark melodic trap', 'The Dreamers Club'],
   openGraph: {
-    title: 'Spaz SsG - Official Artist Platform',
-    description: 'Official home for Spaz SsG. Music, livestreams, content, and The Dreamers Club community.',
-    url: 'https://spazssq.com',
+    title: 'Spaz SsG — Official Artist Website',
+    description: 'Discover music, videos, livestreams, and The Dreamers Club.',
     siteName: 'Spaz SsG',
-    images: [
-      {
-        url: '/logo.png',
-        width: 1200,
-        height: 630,
-        alt: 'Spaz SsG',
-      },
-    ],
+    ...(siteUrl ? { url: siteUrl, images: ['/spaz-ssg-logo.png'] } : {}),
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Spaz SsG - Official Artist Platform',
-    description: 'Official home for Spaz SsG',
-    images: ['/logo.png'],
+    title: 'Spaz SsG — Official Artist Website',
+    description: 'Discover music, videos, livestreams, and The Dreamers Club.',
+    ...(siteUrl ? { images: ['/spaz-ssg-logo.png'] } : {}),
   },
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#08090C" />
-      </head>
       <body>
-        {children}
+        <SiteHeader />
+        <main>{children}</main>
+        <SiteFooter />
       </body>
     </html>
   )

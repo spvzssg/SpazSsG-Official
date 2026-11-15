@@ -1,31 +1,14 @@
-'use client'
+import type { Metadata } from 'next'
+import { OFFICIAL_LINKS, ARTIST_INFO } from '@spaz/config'
 
-import { OFFICIAL_LINKS } from '@spaz/config'
+export const metadata: Metadata = { title: 'The Dreamers Club', description: 'Join The Dreamers Club community on Discord.' }
 
 export default function DreamersClubPage() {
-  return (
-    <div className="min-h-screen bg-midnight-black pt-24">
-      <nav className="fixed top-0 left-0 right-0 bg-midnight-black/95 backdrop-blur border-b border-charcoal z-50">
-        <div className="container flex items-center justify-between h-16">
-          <a href="/" className="text-2xl font-bold text-electric-cyan">SPAZ SSG</a>
-          <div className="flex gap-8">
-            <a href="/" className="text-metallic-silver hover:text-electric-cyan">Home</a>
-            <a href="/dreamers-club" className="text-electric-cyan">Dreamers Club</a>
-          </div>
-        </div>
-      </nav>
-
-      <section className="py-20 bg-gradient-to-b from-electric-cyan/10 to-burnt-orange/10">
-        <div className="container text-center">
-          <h1 className="text-5xl font-bold text-electric-cyan mb-4">The Dreamers Club</h1>
-          <p className="text-xl text-metallic-silver mb-8 max-w-2xl mx-auto">
-            A community of artists, creators, and supporters united by music and ambition. Join us on Discord.
-          </p>
-          <a href={OFFICIAL_LINKS.DISCORD} target="_blank" rel="noopener noreferrer" className="btn-primary text-lg">
-            Join on Discord
-          </a>
-        </div>
-      </section>
-    </div>
-  )
+  return <>
+    <section className="page-hero"><div className="container"><div className="eyebrow">{ARTIST_INFO.COMMUNITY_SLOGAN}</div><h1 className="page-heading">The Dreamers Club</h1><p>A community for people who believe in what they are building—even when the path gets difficult.</p></div></section>
+    <section className="section"><div className="container about-layout">
+      <div className="about-art" aria-hidden="true" />
+      <div className="about-copy"><div className="eyebrow">A place to connect</div><h2 className="page-heading">Keep your people close.</h2><p>The Dreamers Club brings together fans, listeners, independent artists, producers, songwriters, and creators around music and ambition.</p><p>Join the Discord to meet the community and find out what is happening. Community events and announcements will be added here as they are published.</p><a className="button" href={OFFICIAL_LINKS.DISCORD} target="_blank" rel="noreferrer">Join on Discord ↗</a></div>
+    </div></section>
+  </>
 }

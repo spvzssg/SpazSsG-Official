@@ -1,15 +1,16 @@
-import type { NextConfig } from 'next'
-
-const config: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   images: {
     unoptimized: false,
-    domains: ['via.placeholder.com', 'images.unsplash.com'],
   },
-  typescript: {
-    tsconfigPath: './tsconfig.json',
-  },
+  transpilePackages: [
+    '@spaz/types',
+    '@spaz/hooks',
+    '@spaz/utils',
+    '@spaz/services',
+    '@spaz/config',
+  ],
 }
 
-export default config
+module.exports = nextConfig
